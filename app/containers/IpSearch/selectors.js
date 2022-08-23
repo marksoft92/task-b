@@ -6,18 +6,18 @@ import {SCOPE} from './constants';
 
 const context = state => state[SCOPE] || initialState;
 
-export const makeSelectCountries = () =>
+export const makeSelectIps = () =>
   createSelector(
     context,
     substate => substate,
   );
-export const makeSelectCountriesItems = () =>
+export const makeSelectIpData = () =>
   createSelector(
     context,
     state => state.items,
   );
 
-export const makeSelectCountryItem = () =>
+export const makeSelectIpUser = () =>
   createSelector(
     context,
     state => state.item,
@@ -39,4 +39,4 @@ export const makeSelectSearch = () =>
     context,
     state => state.searchValue,
   );
-export default makeSelectCountries;
+export default makeSelectIps;

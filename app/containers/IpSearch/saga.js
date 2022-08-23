@@ -1,15 +1,14 @@
-import {call, put, takeLatest} from 'redux-saga/effects';
+ import {call, put, takeLatest} from 'redux-saga/effects';
 
 
-import {loadIpLocation, loadIpUser} from "../../api/methods/countries";
+import {loadIpLocation, loadIpUser} from "../../api/methods/ipsearch";
 import {getIpError, getIpSuccess, getIpUserError, getIpUserSuccess} from "./actions";
 import {GET_IP, GET_IP_USER} from "./constants";
 
 import alertError from "../../utils/helpers";
-export function* getCountries(actions) {
+export function* getIpData(actions) {
   const ip = actions.items.ip
        const key = 'eb16e5652591ee97c0fba0e228f84f56'
-    // const key ='xd'
   try {
 
     const data = yield call(
@@ -47,6 +46,6 @@ export function* getIpUser() {
 
 
 export default function* githubData() {
-  yield takeLatest(GET_IP, getCountries);
+  yield takeLatest(GET_IP, getIpData);
   yield takeLatest(GET_IP_USER, getIpUser);
 }

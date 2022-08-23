@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 export function InfoBox(props) {
   const {
@@ -9,8 +9,6 @@ export function InfoBox(props) {
     postal,
     state,
   } = props
-  console.log(props)
-
 
   return (
     <>

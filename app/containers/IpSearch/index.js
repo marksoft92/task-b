@@ -12,8 +12,8 @@ import columns from "./List/columns";
 import {getIp, getIpUser, getSearch} from './actions';
 import {
   makeSelectAllItem,
-  makeSelectCountriesItems,
-  makeSelectCountryItem, makeSelectError,
+  makeSelectIpData,
+  makeSelectIpUser, makeSelectError,
   makeSelectSearch
 } from './selectors';
 import SearchBar from "../../components/searchBar";
@@ -21,18 +21,18 @@ import reducer from './reducer';
 import saga from './saga';
 import {withRouter} from "react-router-dom";
 
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps"
 import InfoBox from "../../components/infoBox";
 import alert from "../../utils/helpers";
 
 const key = SCOPE;
 
-export function CountriesList(props) {
+export function IpList(props) {
   useInjectReducer({key, reducer});
   useInjectSaga({key, saga});
 
   const {
-    onLoadCountries,
+    onLoadIp,
     onLoadIpUser,
     onGetSearch,
     searchValue,
@@ -41,40 +41,42 @@ export function CountriesList(props) {
     allSearch,
     error
   } = props
-console.log(error)
 
-const itsError = !!error
   useEffect(() => {
-    if(!!searchValue) onLoadCountries({ip: searchValue})
+    if (!!searchValue) onLoadIp({ip: searchValue})
   }, [searchValue]);
 
   useEffect(() => {
     onLoadIpUser()
-  },[])
+  }, [])
 
   const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
       defaultZoom={12}
-      defaultCenter={{ lat: ipUser.latitude, lng: ipUser.longitude }}
+      defaultCenter={{lat: ipUser.latitude, lng: ipUser.longitude}}
     >
-      {props.isMarkerShown && <Marker position={{ lat: ipUser.latitude, lng: ipUser.longitude }} />}
+      {props.isMarkerShown && <Marker position={{lat: ipUser.latitude, lng: ipUser.longitude}}/>}
     </GoogleMap>
   ))
 
   const IpMap = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
       defaultZoom={12}
-      defaultCenter={{ lat: ip.latitude ? ip.latitude : ipUser.latitude, lng: ip.longitude ? ip.longitude: ipUser.longitude}}
+      defaultCenter={{
+        lat: ip.latitude ? ip.latitude : ipUser.latitude,
+        lng: ip.longitude ? ip.longitude : ipUser.longitude
+      }}
     >
-      {props.isMarkerShown && <Marker position={{ lat: ip.latitude ? ip.latitude : ipUser.latitude, lng: ip.longitude ? ip.longitude: ipUser.longitude}} />}
+      {props.isMarkerShown && <Marker position={{
+        lat: ip.latitude ? ip.latitude : ipUser.latitude,
+        lng: ip.longitude ? ip.longitude : ipUser.longitude
+      }}/>}
     </GoogleMap>
   ))
 
-   useEffect(() => {
-     console.log(1)
-     alert(error)
-     console.log(1)
-   }, [searchValue]);
+  useEffect(() => {
+    alert(error)
+  }, [searchValue]);
   return (
     <div>
       <div className="container">
@@ -84,7 +86,6 @@ const itsError = !!error
             columns={columns}
             dataSource={allSearch}
             pagination={false}
-            onChange={''}
             rowKey={'ip'}
           />
         </div>
@@ -94,9 +95,9 @@ const itsError = !!error
               <MyMapComponent
                 isMarkerShown
                 googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `400px` }} />}
-                mapElement={<div style={{ height: `70%` }} />}
+                loadingElement={<div style={{height: `100%`}}/>}
+                containerElement={<div style={{height: `400px`}}/>}
+                mapElement={<div style={{height: `70%`}}/>}
               />
             </div>
             <div className="info">
@@ -111,9 +112,9 @@ const itsError = !!error
               <IpMap
                 isMarkerShown
                 googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                loadingElement={<div style={{ height: `100%` }} />}
-                containerElement={<div style={{ height: `400px` }} />}
-                mapElement={<div style={{ height: `70%` }} />}
+                loadingElement={<div style={{height: `100%`}}/>}
+                containerElement={<div style={{height: `400px`}}/>}
+                mapElement={<div style={{height: `70%`}}/>}
               />
             </div>
             <div className="info">
@@ -123,26 +124,26 @@ const itsError = !!error
         </div>
       </div>
 
-      {(error || []).map(x =>  <Alert
+      {(error || []).map(x => <Alert
         message="Error"
         description={x}
         type="error"
         showIcon
         closable
-        />)}
+      />)}
     </div>
   );
 }
 
-CountriesList.propTypes = {
-  onLoadCountries: PropTypes.func,
+IpList.propTypes = {
+  onLoadIp: PropTypes.func,
   onLoadIpUser: PropTypes.func,
   onGetSearch: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
-  ip: makeSelectCountriesItems(),
-  ipUser: makeSelectCountryItem(),
+  ip: makeSelectIpData(),
+  ipUser: makeSelectIpUser(),
   searchValue: makeSelectSearch(),
   allSearch: makeSelectAllItem(),
   error: makeSelectError()
@@ -150,7 +151,7 @@ const mapStateToProps = createStructuredSelector({
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onLoadCountries: (ip) => dispatch(getIp(ip)),
+    onLoadIp: (ip) => dispatch(getIp(ip)),
     onLoadIpUser: () => dispatch(getIpUser()),
     onGetSearch: (params) => dispatch(getSearch(params)),
   };
@@ -164,4 +165,4 @@ const withConnect = connect(
 export default withRouter(compose(
   withConnect,
   memo,
-)(CountriesList));
+)(IpList));
