@@ -245,7 +245,8 @@ body {
   border: 1px solid grey;
   padding: 2px;
   width: 100%;
-  margin-right: 10px;
+  margin: 0 auto;
+  width: 80vw;
 
   input {
     flex-grow: 2;
@@ -260,6 +261,10 @@ body {
     border: 1px solid blue;
     background: blue;
     color: white;
+    width: 100%;
+    &.clearBtn {
+      width: 20px;
+    }
   }
 }
 
@@ -298,6 +303,8 @@ body {
 
 .left {
   margin: 10px;
+  width: 70%;
+
   .table-2 {
     border: 1px solid #000;
     padding: 10px;
@@ -307,17 +314,26 @@ body {
 
 .right {
   margin: 10px;
+  width: 30%;
+
   .user {
     display: flex;
+
     .map {
       width: 300px;
       height: 300px;
-
+      margin: 10px 10px 10px 0;
     }
+
     .info {
+      margin: 10px 10px 10px 0;
       width: 300px;
       height: 300px;
-
+      display: block;
     }
   }
+}
+
+.ant-empty-image , .ant-empty-description {
+  text-align: center;
 }

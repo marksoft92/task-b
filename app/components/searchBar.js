@@ -28,7 +28,7 @@ export function SearchBar(props) {
         />
         <button
           onClick={handleClearBtn}
-          className="btn search-btn pointner"
+          className="btn search-btn clearBtn pointner"
         >
           <span>X</span>
         </button>

@@ -3,27 +3,27 @@ import React from 'react';
 const columns = () => (
   [
     {
-    title: 'city',
+    title: 'City',
     dataIndex: 'city',
   },
     {
-      title: 'country_code',
+      title: 'Country code',
       dataIndex: 'country_code',
     },
     {
-      title: 'continent_name',
+      title: 'Continent name',
       dataIndex: 'continent_name'
     },
     {
-      title: 'country_name',
+      title: 'Country name',
       dataIndex: 'country_name',
     },
     {
-      title: 'region_name',
+      title: 'Region name',
       dataIndex: 'region_name',
     },
     {
-      title: 'ip',
+      title: 'Ip',
       dataIndex: 'ip',
     },
   ]

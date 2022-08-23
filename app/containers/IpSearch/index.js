@@ -54,7 +54,7 @@ const itsError = !!error
 
   const MyMapComponent = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
-      defaultZoom={15}
+      defaultZoom={12}
       defaultCenter={{ lat: ipUser.latitude, lng: ipUser.longitude }}
     >
       {props.isMarkerShown && <Marker position={{ lat: ipUser.latitude, lng: ipUser.longitude }} />}
@@ -63,8 +63,8 @@ const itsError = !!error
 
   const IpMap = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
-      defaultZoom={8}
-      defaultCenter={{ lat: ip.latitude, lng: ip.longitude }}
+      defaultZoom={12}
+      defaultCenter={{ lat: ip.latitude ? ip.latitude : ipUser.latitude, lng: ip.longitude ? ip.longitude: ipUser.longitude}}
     >
       {props.isMarkerShown && <Marker position={{ lat: ip.latitude ? ip.latitude : ipUser.latitude, lng: ip.longitude ? ip.longitude: ipUser.longitude}} />}
     </GoogleMap>
@@ -85,7 +85,7 @@ const itsError = !!error
             dataSource={allSearch}
             pagination={false}
             onChange={''}
-            rowKey={'area'}
+            rowKey={'ip'}
           />
         </div>
         <div className="right">

@@ -1,4 +1,5 @@
 import React, {useMemo} from "react";
+import {Alert} from "antd";
 
 
 export function resultFilters (items, currentPage, search) {
@@ -15,4 +16,22 @@ if(search){
 }
 
   return res
+}
+
+export default function alertError (message) {
+  console.log('helper',message)
+
+
+    return (
+      <Alert
+        message="Error"
+        description={message}
+        type="error"
+        showIcon
+        closable
+      />
+
+    )
+
+
 }
