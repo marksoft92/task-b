@@ -1,6 +1,6 @@
 import React from "react";
 import {Route,Switch} from "react-router-dom";
-import IpSearch from "../containers/IpSearch"
+import Home from "../containers/Home"
 import CustomLayout from "./CustomLayout"
 const APP = () =>
   <Switch>
@@ -9,19 +9,10 @@ const APP = () =>
       path="/"
       component={()=>(
         <CustomLayout>
-          <IpSearch/>
+          <Home/>
         </CustomLayout>
       )}
     />
-    <Route
-      exact
-      path="/news"
-      component={()=>(
-        <CustomLayout>
-          <IpSearch/>
-        </CustomLayout>
-      )}
-    />
-
+  
   </Switch>
 export default APP

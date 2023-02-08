@@ -7,10 +7,10 @@ import Svg from '../SVG';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
-import { makeSelectValue } from '../../containers/IpSearch/selectors';
+import { makeSelectValue } from '../../containers/Home/selectors';
 import { withRouter } from 'react-router-dom';
-import reducer from '../../containers/IpSearch/reducer';
-import { SCOPE } from '../../containers/IpSearch/constants';
+import reducer from '../../containers/Home/reducer';
+import { SCOPE } from '../../containers/Home/constants';
 import { useInjectReducer } from 'utils/injectReducer';
 const key = SCOPE;
 
