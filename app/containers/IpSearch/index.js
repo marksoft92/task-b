@@ -22,7 +22,7 @@ import design2 from '../../images/03_blend_1.jpg';
 import design3 from '../../images/04_koloryzacja.jpg';
 import design4 from '../../images/05_so_pure.jpg';
 
-import BoxBig from './components/BoxBig';
+import BoxBig from './components/boxBig';
 
 const key = SCOPE;
 
