@@ -13,6 +13,15 @@ const APP = () =>
         </CustomLayout>
       )}
     />
+    <Route
+      exact
+      path="/news"
+      component={()=>(
+        <CustomLayout>
+          <IpSearch/>
+        </CustomLayout>
+      )}
+    />
 
   </Switch>
 export default APP

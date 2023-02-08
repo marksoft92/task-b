@@ -1,38 +1,23 @@
 import produce from 'immer';
 
 import {
-  GET_IP_ERROR,
-  GET_IP_SUCCESS,
-  GET_IP_USER_SUCCESS,
-  GET_SEARCH
+  CHANGE_VALUE,
+
 } from './constants';
 
 export const initialState = {
-  items: [],
-  item: [],
-  allSearch: [],
-  searchValue: '',
-  error: []
+value: '1'
 };
 
 export default (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case GET_IP_SUCCESS:
-        //draft.items = action.items;
-        return {
-          ...state,
-          items: action.items,
-          allSearch: [...state.allSearch, action.items]
-        }
+
+
+      case CHANGE_VALUE:
+      
+        draft.value = action.value
         break;
-      case GET_IP_USER_SUCCESS:
-        draft.item = action.item
-        break;
-      case GET_SEARCH:
-        draft.searchValue = action.searchValue
-        break;
-      case GET_IP_ERROR:
-        draft.error = [...state.error, action.error]
+
     }
   });

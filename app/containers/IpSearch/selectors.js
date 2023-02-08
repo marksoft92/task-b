@@ -11,32 +11,10 @@ export const makeSelectIps = () =>
     context,
     substate => substate,
   );
-export const makeSelectIpData = () =>
+export const makeSelectValue = () =>
   createSelector(
     context,
-    state => state.items,
+    state => state.value,
   );
 
-export const makeSelectIpUser = () =>
-  createSelector(
-    context,
-    state => state.item,
-  );
-
-export const makeSelectError = () =>
-  createSelector(
-    context,
-    state => state.error,
-  );
-
-export const makeSelectAllItem = () =>
-  createSelector(
-    context,
-    state => state.allSearch,
-  );
-export const makeSelectSearch = () =>
-  createSelector(
-    context,
-    state => state.searchValue,
-  );
 export default makeSelectIps;

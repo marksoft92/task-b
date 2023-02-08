@@ -1,12 +1,10 @@
 import React from 'react'
-
-
-
-
+import MainMenuBlock from '../components/MainMenuBlock';
 function CustomLayout(props){
-  console.log('layout',props)
+
   return(
    <div>
+    <MainMenuBlock/>
      {props.children}
    </div>
   );

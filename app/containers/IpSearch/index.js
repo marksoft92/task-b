@@ -1,159 +1,113 @@
-import React, {useEffect, memo, useMemo, useState} from 'react';
-import PropTypes from 'prop-types';
-import {Alert} from 'antd'
-import {connect} from 'react-redux';
-import {compose} from 'redux';
-import {createStructuredSelector} from 'reselect';
-import {SCOPE} from './constants'
-import {useInjectReducer} from 'utils/injectReducer';
-import {useInjectSaga} from 'utils/injectSaga';
-import {Table} from 'antd';
-import columns from "./List/columns";
-import {getIp, getIpUser, getSearch} from './actions';
-import {
-  makeSelectAllItem,
-  makeSelectIpData,
-  makeSelectIpUser, makeSelectError,
-  makeSelectSearch
-} from './selectors';
-import SearchBar from "../../components/searchBar";
+import React, { useEffect, memo, useMemo, useState } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { createStructuredSelector } from 'reselect';
+import { SCOPE } from './constants';
+import { useInjectReducer } from 'utils/injectReducer';
+import { useInjectSaga } from 'utils/injectSaga';
+import { makeSelectValue } from './selectors';
+
 import reducer from './reducer';
 import saga from './saga';
-import {withRouter} from "react-router-dom";
+import { withRouter } from 'react-router-dom';
+import CustomCarousel from '../../components/Carousel';
+import { changeValue } from './actions';
+import Slide from './components/slide';
+import slide1 from '../../images/slide1-big.jpg';
+import slide2 from '../../images/slide2-big.jpg';
 
-import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps"
-import InfoBox from "../../components/infoBox";
-import alert from "../../utils/helpers";
+import design from '../../images/02_design.jpg';
+import design1 from '../../images/01_care.jpg';
+import design2 from '../../images/03_blend_1.jpg';
+import design3 from '../../images/04_koloryzacja.jpg';
+import design4 from '../../images/05_so_pure.jpg';
+
+import BoxBig from './components/BoxBig';
 
 const key = SCOPE;
 
 export function IpList(props) {
-  useInjectReducer({key, reducer});
-  useInjectSaga({key, saga});
+  useInjectReducer({ key, reducer });
+  useInjectSaga({ key, saga });
 
-  const {
-    onLoadIp,
-    onLoadIpUser,
-    onGetSearch,
-    searchValue,
-    ip,
-    ipUser,
-    allSearch,
-    error
-  } = props
-
-  useEffect(() => {
-    if (!!searchValue) onLoadIp({ip: searchValue})
-  }, [searchValue]);
-
-  useEffect(() => {
-    onLoadIpUser()
-  }, [])
-
-  const MyMapComponent = withScriptjs(withGoogleMap((props) =>
-    <GoogleMap
-      defaultZoom={12}
-      defaultCenter={{lat: ipUser.latitude, lng: ipUser.longitude}}
-    >
-      {props.isMarkerShown && <Marker position={{lat: ipUser.latitude, lng: ipUser.longitude}}/>}
-    </GoogleMap>
-  ))
-
-  const IpMap = withScriptjs(withGoogleMap((props) =>
-    <GoogleMap
-      defaultZoom={12}
-      defaultCenter={{
-        lat: ip.latitude ? ip.latitude : ipUser.latitude,
-        lng: ip.longitude ? ip.longitude : ipUser.longitude
-      }}
-    >
-      {props.isMarkerShown && <Marker position={{
-        lat: ip.latitude ? ip.latitude : ipUser.latitude,
-        lng: ip.longitude ? ip.longitude : ipUser.longitude
-      }}/>}
-    </GoogleMap>
-  ))
-
-  useEffect(() => {
-    alert(error)
-  }, [searchValue]);
+  const { onChangeValue } = props;
+  console.log(props);
   return (
-    <div>
-      <div className="container">
-        <div className="left">
-          <Table
-            className='table-2'
-            columns={columns}
-            dataSource={allSearch}
-            pagination={false}
-            rowKey={'ip'}
-          />
-        </div>
-        <div className="right">
-          <div className="user">
-            <div className="map">
-              <MyMapComponent
-                isMarkerShown
-                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                loadingElement={<div style={{height: `100%`}}/>}
-                containerElement={<div style={{height: `400px`}}/>}
-                mapElement={<div style={{height: `70%`}}/>}
-              />
-            </div>
-            <div className="info">
-              <InfoBox {...ipUser} />
-            </div>
-          </div>
-          <SearchBar
-            search={onGetSearch}
-          />
-          <div className="user">
-            <div className="map">
-              <IpMap
-                isMarkerShown
-                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                loadingElement={<div style={{height: `100%`}}/>}
-                containerElement={<div style={{height: `400px`}}/>}
-                mapElement={<div style={{height: `70%`}}/>}
-              />
-            </div>
-            <div className="info">
-              <InfoBox {...ip} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {(error || []).map(x => <Alert
-        message="Error"
-        description={x}
-        type="error"
-        showIcon
-        closable
-      />)}
-    </div>
+    <>
+      <CustomCarousel onChange={v => onChangeValue(v)}>
+        <Slide
+          className="white"
+          img={slide1}
+          claim="Dla pięknych blond włosów"
+          name="Nowość! 3-etapowa kuracja Keune Care Blonde Savior"
+          href="https://keune-polska.pl/aktualnosci/nowosc-keune-care-blonde-savior-dla-pieknych-zdrowych-zachwycajacych-blond-wlosow"
+          
+        />
+        <Slide
+          className="black"
+          img={slide2}
+          claim="Dla pięknych blond włosów"
+          name="Nowość! 3-etapowa kuracja Keune Care Blonde Savior"
+          href="https://keune-polska.pl/aktualnosci/nowosc-keune-care-blonde-savior-dla-pieknych-zdrowych-zachwycajacych-blond-wlosow"
+        />
+      </CustomCarousel>
+      <section className="default-grid brand-section">
+      <BoxBig
+          className="one-third"
+          title= {<>keune<br/>blen</>}
+          label="Odkryj serie"
+          href="https://keune-polska.pl/marka/blend"
+          src={design}
+        />
+        <BoxBig
+          className="two-thirds"
+          title= {<>keune<br/>blen</>}
+          label="Odkryj serie"
+          href="https://keune-polska.pl/marka/blend"
+          src={design1}
+        />
+        <BoxBig
+          className="one-third"
+          title= {<>keune<br/>blen</>}
+          label="Odkryj serie"
+          href="https://keune-polska.pl/marka/blend"
+          src={design}
+        />
+        <BoxBig
+          className="two-thirds"
+          title= {<>keune<br/>blen</>}
+          label="Odkryj serie"
+          href="https://keune-polska.pl/marka/blend"
+          src={design2}
+        />
+        <BoxBig
+          className="two-thirds"
+          title= {<>keune<br/>blen</>}
+          label="Odkryj serie"
+          href="https://keune-polska.pl/marka/blend"
+          src={design3}
+        />
+        <BoxBig
+          className="one-third"
+          title= {<>keune<br/>blen</>}
+          label="Odkryj serie"
+          href="https://keune-polska.pl/marka/blend"
+          src={design4}
+        />
+      </section>
+    </>
   );
 }
 
-IpList.propTypes = {
-  onLoadIp: PropTypes.func,
-  onLoadIpUser: PropTypes.func,
-  onGetSearch: PropTypes.func,
-};
+IpList.propTypes = {};
 
 const mapStateToProps = createStructuredSelector({
-  ip: makeSelectIpData(),
-  ipUser: makeSelectIpUser(),
-  searchValue: makeSelectSearch(),
-  allSearch: makeSelectAllItem(),
-  error: makeSelectError()
+  class: makeSelectValue(),
 });
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onLoadIp: (ip) => dispatch(getIp(ip)),
-    onLoadIpUser: () => dispatch(getIpUser()),
-    onGetSearch: (params) => dispatch(getSearch(params)),
+    onChangeValue: value => dispatch(changeValue(value)),
   };
 }
 
@@ -162,7 +116,9 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-export default withRouter(compose(
-  withConnect,
-  memo,
-)(IpList));
+export default withRouter(
+  compose(
+    withConnect,
+    memo,
+  )(IpList),
+);
