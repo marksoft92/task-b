@@ -8,7 +8,7 @@ const SvgSprite = () => (
       x="0px"
       y="0px"
       viewBox="0 0 162 59"
-      enable-background="new 0 0 162 59"
+      enableBackground="new 0 0 162 59"
     >
       <path
         d="M20.031,47.826L6.775,34.606l20.832-20.647l-2.258-0.034L3.444,35.092l-0.07-0.555l0.01-20.578H1.483v44.06
@@ -58,7 +58,7 @@ const SvgSprite = () => (
       y="0px"
    
       viewBox="0 0 162 59"
-      enable-background="new 0 0 162 59"
+      enableBackground="new 0 0 162 59"
     >
       <path
         d="M20.031,47.826L6.775,34.606l20.832-20.647l-2.258-0.034L3.444,35.092l-0.07-0.555l0.01-20.578H1.483v44.06
@@ -92,7 +92,7 @@ const SvgSprite = () => (
       width="20px"
       height="20px"
       viewBox="0 0 55.335 45.142"
-      enable-background="new 0 0 55.335 45.142"
+      enableBackground="new 0 0 55.335 45.142"
     >
       <path
         d="M55.335,5.408c-1.129,0.387-2.095,0.775-3.094,1.064c-1.031,0.258-2.094,0.452-3.125,0.646l-0.033-0.129
@@ -115,7 +115,7 @@ const SvgSprite = () => (
       width="20px"
       height="20px"
       viewBox="0 0 55.335 45.142"
-      enable-background="new 0 0 55.335 45.142"
+      enableBackground="new 0 0 55.335 45.142"
     >
       <path
         d="M55.335,5.408c-1.129,0.387-2.095,0.775-3.094,1.064c-1.031,0.258-2.094,0.452-3.125,0.646l-0.033-0.129
@@ -138,11 +138,11 @@ const SvgSprite = () => (
       width="20px"
       height="20px"
       viewBox="0 0 43.507 43.506"
-      enable-background="new 0 0 43.507 43.506"
+      enableBackground="new 0 0 43.507 43.506"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M32.839,0H10.667C4.769,0,0,4.769,0,10.667v22.173
 			c0,5.897,4.769,10.667,10.667,10.667h22.172c5.898,0,10.667-4.769,10.667-10.667V10.667C43.507,4.769,38.737,0,32.839,0z
 			 M22.139,32.259c-5.994,0-10.859-4.866-10.859-10.861c0-6.025,4.865-10.893,10.859-10.893c6.027,0,10.894,4.868,10.894,10.893
@@ -158,11 +158,11 @@ const SvgSprite = () => (
       width="20px"
       height="20px"
       viewBox="0 0 43.507 43.506"
-      enable-background="new 0 0 43.507 43.506"
+      enableBackground="new 0 0 43.507 43.506"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M32.839,0H10.667C4.769,0,0,4.769,0,10.667v22.173
 			c0,5.897,4.769,10.667,10.667,10.667h22.172c5.898,0,10.667-4.769,10.667-10.667V10.667C43.507,4.769,38.737,0,32.839,0z
 			 M22.139,32.259c-5.994,0-10.859-4.866-10.859-10.861c0-6.025,4.865-10.893,10.859-10.893c6.027,0,10.894,4.868,10.894,10.893
@@ -178,7 +178,7 @@ const SvgSprite = () => (
 	  width="20px"
       height="20px"
       viewBox="0 0 20.916 45.118"
-      enable-background="new 0 0 20.916 45.118"
+      enableBackground="new 0 0 20.916 45.118"
     >
       <path
         d="M0,14.502h2.578c1.902,0,1.675,0.29,1.708-1.643c0.032-1.58,0.032-3.191,0.13-4.771c0.16-4.189,3.447-7.605,7.669-7.895
@@ -198,7 +198,7 @@ const SvgSprite = () => (
       width="20px"
       height="20px"
       viewBox="0 0 20.916 45.118"
-      enable-background="new 0 0 20.916 45.118"
+      enableBackground="new 0 0 20.916 45.118"
     >
       <path
         d="M0,14.502h2.578c1.902,0,1.675,0.29,1.708-1.643c0.032-1.58,0.032-3.191,0.13-4.771c0.16-4.189,3.447-7.605,7.669-7.895

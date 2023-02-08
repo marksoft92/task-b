@@ -1,4 +1,4 @@
-import React, { useEffect, memo, useMemo, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
@@ -26,12 +26,55 @@ import BoxBig from './components/boxBig';
 
 const key = SCOPE;
 
-export function IpList(props) {
+const dataBox = [{
+          className:"one-third",
+          title:<>keune<br/>blen</>,
+          label:"Odkryj serie",
+          href: "https://keune-polska.pl/marka/blend",
+          src:design
+},
+{
+  className:"two-thirds",
+  title:<>keune<br/>blen</>,
+  label:"Odkryj serie",
+  href: "https://keune-polska.pl/marka/blend",
+  src:design1
+},
+{
+  className:"one-third",
+  title:<>keune<br/>blen</>,
+  label:"Odkryj serie",
+  href: "https://keune-polska.pl/marka/blend",
+  src:design
+},
+{
+  className:"two-thirds",
+  title:<>keune<br/>blen</>,
+  label:"Odkryj serie",
+  href: "https://keune-polska.pl/marka/blend",
+  src:design2
+},
+{
+  className:"two-thirds",
+  title:<>keune<br/>blen</>,
+  label:"Odkryj serie",
+  href: "https://keune-polska.pl/marka/blend",
+  src:design3
+},
+{
+  className:"one-third",
+  title:<>keune<br/>blen</>,
+  label:"Odkryj serie",
+  href: "https://keune-polska.pl/marka/blend",
+  src:design4
+},]
+
+export function HomePage(props) {
   useInjectReducer({ key, reducer });
   useInjectSaga({ key, saga });
 
   const { onChangeValue } = props;
-  console.log(props);
+
   return (
     <>
       <CustomCarousel onChange={v => onChangeValue(v)}>
@@ -52,54 +95,20 @@ export function IpList(props) {
         />
       </CustomCarousel>
       <section className="default-grid brand-section">
-      <BoxBig
-          className="one-third"
-          title= {<>keune<br/>blen</>}
-          label="Odkryj serie"
-          href="https://keune-polska.pl/marka/blend"
-          src={design}
-        />
-        <BoxBig
-          className="two-thirds"
-          title= {<>keune<br/>blen</>}
-          label="Odkryj serie"
-          href="https://keune-polska.pl/marka/blend"
-          src={design1}
-        />
-        <BoxBig
-          className="one-third"
-          title= {<>keune<br/>blen</>}
-          label="Odkryj serie"
-          href="https://keune-polska.pl/marka/blend"
-          src={design}
-        />
-        <BoxBig
-          className="two-thirds"
-          title= {<>keune<br/>blen</>}
-          label="Odkryj serie"
-          href="https://keune-polska.pl/marka/blend"
-          src={design2}
-        />
-        <BoxBig
-          className="two-thirds"
-          title= {<>keune<br/>blen</>}
-          label="Odkryj serie"
-          href="https://keune-polska.pl/marka/blend"
-          src={design3}
-        />
-        <BoxBig
-          className="one-third"
-          title= {<>keune<br/>blen</>}
-          label="Odkryj serie"
-          href="https://keune-polska.pl/marka/blend"
-          src={design4}
-        />
+      {dataBox.map((v,i) => <BoxBig key={i}
+       className={v.className}
+       title= {v.title.props.children}
+       label={v.label}
+       href={v.href}
+       src={v.src}
+      />)}
+      
       </section>
     </>
   );
 }
 
-IpList.propTypes = {};
+HomePage.propTypes = {};
 
 const mapStateToProps = createStructuredSelector({
   class: makeSelectValue(),
@@ -120,5 +129,5 @@ export default withRouter(
   compose(
     withConnect,
     memo,
-  )(IpList),
+  )(HomePage),
 );

@@ -19,9 +19,6 @@ if(search){
 }
 
 export default function alertError (message) {
-  console.log('helper',message)
-
-
     return (
       <Alert
         message="Error"
