@@ -20,7 +20,7 @@ function chandleChangeParentClass (v) {
     className={`carousel-${parentClass}`}
     dots="dots-carousel"
     beforeChange={v=>chandleChangeParentClass(v)}
-    //autoplay
+    autoplay
     >
     {props.children}
     </Carousel>
